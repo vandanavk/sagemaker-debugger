@@ -4,7 +4,7 @@ if [ "$CODEBUILD_GIT_BRANCH" = "" ] ; then
   export CODEBUILD_GIT_BRANCH=${CODEBUILD_GIT_BRANCH#remotes/origin/};
 fi
 
-cd $CODEBUILD_SRC_DIR && git checkout $CODEBUILD_GIT_BRANCH
+#cd $CODEBUILD_SRC_DIR && git checkout $CODEBUILD_GIT_BRANCH
 export CURRENT_COMMIT_HASH=$(git log -1 --pretty=%h);
 #export CURRENT_COMMIT_DATE="$(git show -s --format=%ci | cut -d' ' -f 1)$(git show -s --format=%ci | cut -d' ' -f 2)";
 export CURRENT_DATETIME=$(date +'%Y%m%d_%H%M%S')
@@ -19,7 +19,7 @@ if [ "$CODEBUILD_SRC_DIR_RULES" = "" ] ; then
   export CODEBUILD_GIT_BRANCH_RULES=${CODEBUILD_GIT_BRANCH_RULES#remotes/origin/};
 fi
 
-cd $CODEBUILD_SRC_DIR_RULES && git checkout $CODEBUILD_GIT_BRANCH_RULES
+#cd $CODEBUILD_SRC_DIR_RULES && git checkout $CODEBUILD_GIT_BRANCH_RULES
 export RULES_CODEBUILD_SRC_DIR="$CODEBUILD_SRC_DIR_RULES"
 export CURRENT_COMMIT_HASH_RULES=$(git log -1 --pretty=%h);
 export CURRENT_REPO_NAME_RULES=$(basename `git rev-parse --show-toplevel`) ;
