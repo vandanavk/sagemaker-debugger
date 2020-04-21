@@ -78,6 +78,10 @@ def test_register_loss_functional(out_dir):
     loss_tensor = trial.tensor("nll_loss_output_0")
 
     # Capture ['nll_loss_output_0']
+
+    # Vanilla PT will save loss only once when hook.record_tensor_value() is called.
+    # While for AWS - PT, this test saves loss twice as described in this issue
+    # https://github.com/awslabs/sagemaker-debugger/issues/205.
     assert len(trial.tensor_names()) >= 1
     assert len(loss_coll.tensor_names) >= 1
 
